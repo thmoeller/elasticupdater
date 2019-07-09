@@ -1,0 +1,21 @@
+{
+  "name": "elasticupdater",
+  "version": "1.0.0",
+  "description": "Download and install latest version of Elasticstack",
+  "main": "elkupdater.js",
+  "dependencies": {
+    "adm-zip": "^0.4.13",
+    "httpntlm": "^1.7.6",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node elkupdater"
+  },
+  "keywords": [
+    "Elastic",
+    "Stack"
+  ],
+  "author": "Thorsten Moeller",
+  "license": "MIT"
+}
