@@ -1,19 +1,21 @@
 var fs = require('fs');
 var request = require('request');
 var AdmZip = require('adm-zip');
+var version = "7.2.0"
+
 
 var urlList = [
-    "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.6.1.zip",
-    "https://artifacts.elastic.co/downloads/logstash/logstash-6.6.1.zip",
-    "https://artifacts.elastic.co/downloads/kibana/kibana-6.6.1-windows-x86_64.zip",
-    "https://artifacts.elastic.co/downloads/apm-server/apm-server-6.6.1-windows-x86_64.zip",
-    "https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.6.1-windows-x86_64.zip",
-    "https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-6.6.1-windows-x86_64.zip",
-    "https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-6.6.1-windows-x86_64.zip",
-    "https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-6.6.1-windows-x86_64.zip",
-    "https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-6.6.1-windows-x86_64.zip",
-    "https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-6.6.1-windows-x86_64.zip",
-    "https://artifacts.elastic.co/downloads/beats/functionbeat/functionbeat-6.6.1-windows-x86_64.zip"]
+    "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-" + version + ".zip",
+    "https://artifacts.elastic.co/downloads/logstash/logstash-" + version + ".zip",
+    "https://artifacts.elastic.co/downloads/kibana/kibana-" + version + "-windows-x86_64.zip",
+    "https://artifacts.elastic.co/downloads/apm-server/apm-server-" + version + "-windows-x86_64.zip",
+    "https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-" + version + "-windows-x86_64.zip",
+    "https://artifacts.elastic.co/downloads/beats/packetbeat/packetbeat-" + version + "-windows-x86_64.zip",
+    "https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-" + version + "-windows-x86_64.zip",
+    "https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-" + version + "-windows-x86_64.zip",
+    "https://artifacts.elastic.co/downloads/beats/heartbeat/heartbeat-" + version + "-windows-x86_64.zip",
+    "https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-" + version + "-windows-x86_64.zip",
+    "https://artifacts.elastic.co/downloads/beats/functionbeat/functionbeat-" + version + "-windows-x86_64.zip"]
 
 var download = function (myurl, dest, callback) {
 
