@@ -1,12 +1,13 @@
 var fs = require('fs');
 var request = require('request');
 var AdmZip = require('adm-zip');
-var version = "7.2.0"
+var version = process.argv[2]
+var tfolder = process.argv[3]
 
 
 var urlList = [
-    "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-" + version + ".zip",
-    "https://artifacts.elastic.co/downloads/logstash/logstash-" + version + ".zip",
+    "https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-" + version + "-windows-x86_64.zip",
+    "https://artifacts.elastic.co/downloads/logstash/logstash-" + version + "-windows-x86_64.zip",
     "https://artifacts.elastic.co/downloads/kibana/kibana-" + version + "-windows-x86_64.zip",
     "https://artifacts.elastic.co/downloads/apm-server/apm-server-" + version + "-windows-x86_64.zip",
     "https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-" + version + "-windows-x86_64.zip",
@@ -19,13 +20,13 @@ var urlList = [
 
 var download = function (myurl, dest, callback) {
 
-    if (process.argv[2] === 'company') {
+    if (process.argv[4] === 'company') {
         
         request.get({
             gzip: true,
             tunnel: false,
             url: myurl,
-            proxy: 'https://127.0.0.1:53128'            
+            proxy: 'https://127.0.0.1:3128'            
         }).on('error', function (err) { console.log(err) })
           .pipe(fs.createWriteStream(dest))
           .on('close', callback);
@@ -67,6 +68,6 @@ urlList.forEach(function (str) {
         console.log('Finished Downloading ' + filename)
         console.log('Start Unzip ' + filename)
         var zip = new AdmZip("./downloads/" + filename);
-        zip.extractAllTo(/*target path*/ "./elastic/" + folder + "/", /*overwrite*/ true);
+        zip.extractAllTo(/*target path like ./elastic/ */ tfolder + folder + "/", /*overwrite*/ true);;
     });
 });
